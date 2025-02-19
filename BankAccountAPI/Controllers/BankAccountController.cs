@@ -22,18 +22,18 @@ namespace BankAccountAPI.Controllers
             return Regex.IsMatch(accountNumber, "^\\d{10}$");
         }
 
-        [HttpPost("create")]
-        public IActionResult CreateAccount([FromBody] BankAccount account)
-        {
-            if (account == null || string.IsNullOrWhiteSpace(account.AccountNumber) || !IsValidAccountNumber(account.AccountNumber) || string.IsNullOrWhiteSpace(account.AccountHolder))
-                return BadRequest(new { Error = "Invalid account details" });
+        // [HttpPost("create")]
+        // public IActionResult CreateAccount([FromBody] BankAccount account)
+        // {
+        //     if (account == null || string.IsNullOrWhiteSpace(account.AccountNumber) || !IsValidAccountNumber(account.AccountNumber) || string.IsNullOrWhiteSpace(account.AccountHolder))
+        //         return BadRequest(new { Error = "Invalid account details" });
 
-            if (Accounts.Any(a => a.AccountNumber == account.AccountNumber))
-                return Conflict(new { Error = "Account already exists" });
+        //     if (Accounts.Any(a => a.AccountNumber == account.AccountNumber))
+        //         return Conflict(new { Error = "Account already exists" });
 
-            Accounts.Add(account);
-            return CreatedAtAction(nameof(GetBalance), new { accountNumber = account.AccountNumber }, new { Success = true, Message = "Account created successfully", Account = account });
-        }
+        //     Accounts.Add(account);
+        //     return CreatedAtAction(nameof(GetBalance), new { accountNumber = account.AccountNumber }, new { Success = true, Message = "Account created successfully", Account = account });
+        // }
 
         [HttpPost("deposit")]
         public IActionResult Deposit([FromBody] TransactionRequest request)

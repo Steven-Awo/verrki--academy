@@ -13,7 +13,7 @@ The Bank Account API is a simple RESTful API built using ASP.NET Core that allow
 
 ## Endpoints
 
-### 1. Create Account
+<!-- ### 1. Create Account
 
 - **URL**: `/api/bank/create`
 - **Method**: `POST`
@@ -27,7 +27,7 @@ The Bank Account API is a simple RESTful API built using ASP.NET Core that allow
 - **Response**:
     - **201 Created**: Account successfully created.
     - **400 Bad Request**: Invalid account details.
-    - **409 Conflict**: Account already exists.
+    - **409 Conflict**: Account already exists. -->
 
 ### 2. Deposit
 
@@ -76,15 +76,15 @@ The Bank Account API is a simple RESTful API built using ASP.NET Core that allow
 
 Represents a bank account with the following properties:
 
-- `AccountNumber`: The unique identifier for the account.
-- `AccountHolder`: The name of the account holder.
+- `AccountNumber`: The unique identifier for the account (required).
+- `AccountHolder`: The name of the account holder (required).
 - `Balance`: The current balance of the account (default is 0).
 
 ### TransactionRequest
 
 Represents a transaction request with the following properties:
 
-- `AccountNumber`: The unique identifier for the account.
+- `AccountNumber`: The unique identifier for the account (required).
 - `Amount`: The amount to be deposited or withdrawn.
 
 ## Getting Started
@@ -110,6 +110,10 @@ Represents a transaction request with the following properties:
    ```
 
 5. The API will be available at `http://localhost:5000/api/bank`.
+
+## Testing with Postman
+
+You can test the API using Postman by sending requests to the endpoints listed above. Make sure to set the appropriate HTTP method, URL, and request body.
 
 ## Contributing
 
