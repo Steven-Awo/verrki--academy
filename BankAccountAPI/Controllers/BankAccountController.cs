@@ -32,7 +32,7 @@ namespace BankAccountAPI.Controllers
                 return Conflict(new { Error = "Account already exists" });
 
             Accounts.Add(account);
-            return CreatedAtAction(nameof(GetBalance), new { accountNumber = account.AccountNumber }, account);
+            return CreatedAtAction(nameof(GetBalance), new { accountNumber = account.AccountNumber }, new { Success = true, Message = "Account created successfully", Account = account });
         }
 
         [HttpPost("deposit")]
